@@ -1,3 +1,0 @@
-[submodule "publish"]
-	path = publish
-	url = git@github.com:model-graph-tools/model-graph-tools.github.io.git
