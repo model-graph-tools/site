@@ -1,0 +1,13 @@
+# theme.toml template for a Hugo theme
+# See https://github.com/gohugoio/hugoThemes#themetoml for an example
+
+name = "MGT"
+license = "Apache 2"
+licenselink = "https://github.com/model-graph-tools/site/blob/main/LICENSE.txt"
+description = "Theme for the Model Graph Tools website"
+homepage = "https://model-graph-tools.github.io/"
+min_version = "0.36"
+
+[author]
+  name = "Harald Pehl"
+  homepage = "hpehl@redhat.com"

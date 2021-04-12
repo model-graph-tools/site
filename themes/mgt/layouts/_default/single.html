@@ -1,0 +1,42 @@
+{{- define "main" -}}
+{{- $depth := len (split .RelPermalink "/") -}}
+{{- $breadcrumb := gt $depth 3 -}}
+{{- $toc := .Params.toc -}}
+<div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+        <main class="{{ $.Site.Params.mainClass }}{{ if $toc }} col-lg-9{{ end }} hal-content" role="main">
+            {{- if $toc -}}
+                <aside class="d-none d-lg-block col-lg-3 hal-aside">
+                    <div class="hal-aside-separator">
+                        {{- if $breadcrumb -}}
+                        <nav class="hal-breadcrumb" aria-label="breadcrumb">
+                            <h6>You're here:</h6>
+                            <ol class="breadcrumb bg-white py-0">
+                                {{- partial "breadcrumb.html" (dict "currentPage" .Page "id" .File.UniqueID) -}}
+                            </ol>
+                        </nav>
+                        <hr/>
+                        {{- end -}}
+                        <div class="hal-toc">
+                            <h6>On this page:</h6>
+                            {{- .TableOfContents -}}
+                        </div>
+                    </div>
+                </aside>
+            {{- else -}}
+                {{- if $breadcrumb -}}
+                    <nav class="hal-breadcrumb-only float-right" aria-label="breadcrumb">
+                        <ol class="breadcrumb bg-white pr-0 pb-0">
+                            {{- partial "breadcrumb.html" (dict "currentPage" .Page "id" .File.UniqueID) -}}
+                        </ol>
+                    </nav>
+                {{- end -}}
+            {{- end -}}
+            <article class="hal-article">
+                <header><h1 class="display-4">{{ .Title }}</h1></header>
+                {{ .Content }}
+            </article>
+        </main>
+    </div>
+</div>
+{{- end -}}

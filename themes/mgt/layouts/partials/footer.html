@@ -1,0 +1,37 @@
+<footer class="hal-footer footer-dark bg-dark position-relative p-5">
+    <div class="container">
+        <div class="row">
+            {{- range $index, $element := .Site.Menus.footer -}}
+            <div class="col-md-2 {{ if eq $index 0 }}offset-md-1{{ end }}">
+                <h6>{{ .Name }}</h6>
+                <ul class="list-unstyled">
+                    {{- range .Children -}}
+                    <li><a class="small" href="{{ .URL }}">{{ .Name }}</a></li>
+                    {{- end -}}
+                </ul>
+            </div>
+            {{- end -}}
+            <div class="col-md-3 offset-md-1">
+                <h6>Apache 2 License</h6>
+                <p class="small">All dependencies of this project are available under the Apache 2 or a compatible
+                    license.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-1 hal-smaller font-weight-light">
+                <ul class="list-unstyled mb-0">
+                    <li>{{.Site.Params.CopyrightHTML | safeHTML}}</li>
+                    <li><span class="fas fa-wrench"></span> Made with <a href="https://gohugo.io/">Hugo</a> static site
+                        generator.
+                    </li>
+                    <li><span class="fas fa-code-branch"></span> This website is open source! If you want to improve it,
+                        <a href="https://github.com/hal/site">fork the project</a> and send a pull request.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="d-flex justify-content-center p-2 m-2">
+    <a href="https://www.redhat.com/"><img src="{{ "/img/redhat.svg" | relURL }}" alt="" class="img-fluid" style="width: 100px"/></a>
+</div>

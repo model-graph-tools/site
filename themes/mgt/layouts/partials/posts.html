@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+        <main class="{{ $.Site.Params.mainClass }}" role="main">
+            <header><h1 class="display-4 mb-4">{{ .Title }}</h1></header>
+            {{ .Content }}
+            {{ range .Paginator.Pages.ByDate.Reverse }}
+            <article class="d-md-flex align-items-md-start mb-4">
+                <time class="pr-4 text-md-right hal-post-date">
+                    {{ .Date.Format "Jan 2, 2006" }}
+                </time>
+                <div class="flex-md-grow-1">
+                    <a class="hal-bigger" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    {{- with .Params.Description -}}
+                    <p class="hal-post-description mb-0">{{ . | markdownify }}</p>
+                    {{- end -}}
+                    {{ partial "tags.html" . }}
+                </div>
+            </article>
+            {{ end }}
+            {{ partial "pagination.html" . }}
+        </main>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}">
+<head>
+    {{ partial "meta.html" . }}
+    {{ hugo.Generator }}
+    <link rel="canonical" href="{{ .Permalink }}">
+    <title>{{ block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+    {{ partial "favicon.html" . }}
+    {{ partial "css.html" . }}
+    {{ partial "script-header.html" . }}
+</head>
+<body>
+{{ partial "nav.html" . }}
+{{ block "main" . }}{{ end }}
+{{ partial "footer.html" . }}
+{{ partial "script-body.html" . }}
+</body>
+</html>

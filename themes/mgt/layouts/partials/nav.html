@@ -1,0 +1,27 @@
+{{- $currentPage := . -}}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#hal-navbar"
+            aria-controls="hal-navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="hal-navbar">
+        <ul class="navbar-nav mr-auto">
+            {{- range .Site.Menus.global -}}
+                {{- $isCurrent := $currentPage.IsMenuCurrent "global" . -}}
+                {{- $hasCurrent := $currentPage.HasMenuCurrent "global" . -}}
+                {{- $sectionEqId := eq $currentPage.Section .Identifier -}}
+                {{- $matchURL := eq $currentPage.Permalink .URL }}
+                <li class="nav-item {{ if or ($isCurrent) (or ($hasCurrent) (or ($sectionEqId) ($matchURL))) }}active{{ end }}">
+                    <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
+                </li>
+            {{- end -}}
+        </ul>
+        <ul class="navbar-nav">
+            {{- range .Site.Menus.external -}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ .URL }}" title="{{ .Name }}"><span class="{{ .Post }}"></span></a>
+            </li>
+            {{- end -}}
+        </ul>
+    </div>
+</nav>

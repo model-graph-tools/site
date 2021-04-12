@@ -1,0 +1,7 @@
+{{- with .Params.Tags -}}
+<ul class="hal-tags">
+    {{ range . }}
+    <li><a class="hal-tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+    {{ end }}
+</ul>
+{{- end -}}

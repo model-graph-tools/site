@@ -1,0 +1,19 @@
+{{ $pag := $.Paginator }}
+{{ if gt $pag.TotalPages 1 }}
+<ul class="pagination mt-4">
+    <li>
+        {{ if $pag.HasPrev }}
+        <a class="mr-4" href="{{ $pag.Prev.URL }}">&larr; Newer Posts</a>
+        {{ else }}
+        <span class="text-secondary mr-4">No Newer Posts</span>
+        {{ end }}
+    </li>
+    <li>
+        {{ if $pag.HasNext }}
+        <a href="{{ $pag.Next.URL }}">Previous Posts &rarr;</a>
+        {{ else }}
+        <span class="text-secondary mr-4">No Previous Posts</span>
+        {{ end }}
+    </li>
+</ul>
+{{ end }}

@@ -1,3 +1,19 @@
-baseURL = "http://example.org/"
+baseURL = "https://model-graph-tools.github.io/"
+description = "Tools and services to analyze, query and browse the WildFly mangement model"
+enableGitInfo = true
+# googleAnalytics = "UA-89365654-5"
 languageCode = "en-us"
-title = "My New Hugo Site"
+paginate = 7
+pluralizeListTitles = false
+pygmentsCodefences = true
+pygmentsUseClasses = true
+title = "WildFly Model Graph Tools"
+theme = "mgt"
+
+[params]
+  copyrighthtml = "<span class=\"far fa-copyright\"></span> Copyright 2021 Red Hat, Inc."
+  mainClass = "col-12 col-md-12 py-md-3 px-md-5"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"

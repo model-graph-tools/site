@@ -1,0 +1,36 @@
+{{- define "main" -}}
+{{- $depth := len (split .RelPermalink "/") -}}
+{{- $breadcrumb := gt $depth 3 -}}
+<div class="container-fluid">
+    <div class="row">
+        <main class="{{ $.Site.Params.mainClass }}" role="main">
+            {{- if $breadcrumb -}}
+                <nav class="hal-breadcrumb-only float-right" aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-white pr-0 pb-0">
+                        {{- partial "breadcrumb.html" (dict "currentPage" .Page "id" .File.UniqueID) -}}
+                    </ol>
+                </nav>
+            {{- end -}}
+            <header><h1 class="display-4">{{ .Title }}</h1></header>
+            {{ .Content }}
+            {{ with .Pages }}
+                <div class="d-lg-flex flex-lg-wrap">
+                    {{- range . -}}
+                        {{- $link := .RelPermalink -}}
+                        <div class="d-flex hal-flex-3-per-row pt-4 pr-md-5">
+                            {{- with .Params.icon -}}
+                                <div><a href="{{ $link }}"><img class="hal-teaser-icon mr-3" src="{{ . }}"></a></div>
+                            {{- end -}}
+                            <div>
+                                <h5 class="card-title"><a href="{{ $link }}" class="text-dark">{{ .Title }}</a></h5>
+                                {{- with .Params.Description -}}<div class="card-text"><p>{{ . | markdownify }}</p></div>{{- end -}}
+                                <a href="{{ $link }}" class="card-link">Read More &raquo;</a>
+                            </div>
+                        </div>
+                    {{- end -}}
+                </div>
+            {{ end }}
+        </main>
+    </div>
+</div>
+{{- end -}}
